@@ -12,8 +12,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="card" style="widht: 18rem">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ Auth::user()->name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{Auth::user()->email }}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{Auth::user()->phone }}</h6>
+                        <div>
+                    </div>
 
-                    Congratulations you have successfully logged in. Good luck :)
                 </div>
             </div>
         </div>

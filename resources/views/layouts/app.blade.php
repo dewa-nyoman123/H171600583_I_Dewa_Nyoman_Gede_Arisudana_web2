@@ -33,7 +33,28 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                    <div class="dropdown show">
+                    @auth
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pilihan Menu
+                        </a>
 
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{ route('KategoriArtikel.index') }}">Kategori Artikel</a>
+                            <a class="dropdown-item" href="{{ route('artikel.index') }}">Artikel</a>
+
+                            <a class="dropdown-item" href="{{ route('KategoriBerita.index') }}">Kategori Berita</a>
+                            <a class="dropdown-item" href="{{ route('berita.index') }}">Berita</a>
+
+                            <a class="dropdown-item" href="{{ route('KategoriGaleri.index') }}">Kategori Galeri</a>
+                            <a class="dropdown-item" href="{{ route('galeri.index') }}">Galeri</a>
+                            
+                            <a class="dropdown-item" href="{{ route('pengumuman.index') }}">Pengumuman</a>
+                            <a class="dropdown-item" href="{{ route('KategoriPengumuman.index') }}">Kategori Pengumuman</a>
+
+                        </div>
+                        </div>
+                    @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -76,5 +97,12 @@
             @yield('content')
         </main>
     </div>
+    </div>
+    <script
+            src="http://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+            @yield('scripts')
 </body>
 </html>

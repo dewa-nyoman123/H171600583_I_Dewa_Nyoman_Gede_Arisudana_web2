@@ -11,4 +11,7 @@ class KategoriArtikel extends Model
     protected $fillable = [
         'nama','users_id',
     ];
+    protected $casts=[
+
+    ];
 }
