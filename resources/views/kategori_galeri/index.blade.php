@@ -33,7 +33,7 @@
 			<td>{!! $item->created_at->format('d/m/Y H:i:s') !!}</td>
 
 			<td><a href ="index.php?p=tang" button class="btn btn-danger" type="button"> Hapus </button></a>
-			<a href="{!! route('KategoriGaleri.show',[$item-> id]) !!}" button class="btn btn-warning">Lihat</a>
+			<a href="{!! route('KategoriGaleri.show',[$item-> id]) !!}" button class="btn btn-success">Lihat</a>
 		</tr>
 	
 		@endforeach

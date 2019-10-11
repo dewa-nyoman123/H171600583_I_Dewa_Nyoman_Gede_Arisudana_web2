@@ -49,8 +49,9 @@
                             <a class="dropdown-item" href="{{ route('KategoriGaleri.index') }}">Kategori Galeri</a>
                             <a class="dropdown-item" href="{{ route('galeri.index') }}">Galeri</a>
                             
-                            <a class="dropdown-item" href="{{ route('pengumuman.index') }}">Pengumuman</a>
                             <a class="dropdown-item" href="{{ route('KategoriPengumuman.index') }}">Kategori Pengumuman</a>
+                            <a class="dropdown-item" href="{{ route('pengumuman.index') }}">Pengumuman</a>
+                           
 
                         </div>
                         </div>

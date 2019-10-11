@@ -21,6 +21,7 @@
                         <th scope="col">Nama</th>
                         <th scope="col">User_id</th>
                         <th scope="col">Create</th>
+						<th scope="col">Update</th>
                         <th scope="col">Aksi</th>
 				</tr>
 					</thead>      
@@ -31,10 +32,19 @@
 			<td>{!! $item->nama !!}</td>
 			<td>{!! $item->users_id !!}</td>
 			<td>{!! $item->created_at->format('d/m/Y H:i:s') !!}</td>
+			<td>{!! $item->updated_at->format('d/m/Y H:i:s') !!}</td>
 			
-			<td><a href ="index.php?p=tang" button class="btn btn-danger" type="button"> Hapus </button></a>
-			<a href="{!! route('KategoriBerita.show',[$item-> id]) !!}" button class="btn btn-warning">Lihat</a>
+			<td>
+			<a href="{!! route('KategoriBerita.show',[$item-> id]) !!}" button class="btn btn-success">Lihat</a>
+			
+			<a href="{!! route('KategoriBerita.edit',[$item-> id]) !!}" button class="btn btn-warning">Edit</a>
+			
+			{!! Form::open(['route' => ['KategoriBerita.destroy', $item->id],'method' => 'delete']) !!}
+
+                 {!! Form::submit('Hapus', ['class'=>'btn  btn-sm btn-danger','onclick'=>"return confirm('Apakah Anda yakin menghapus data ini ?')"]); !!}
+                {!! Form::close() !!}
 			</td>
+			
 		</tr>
 	
 		@endforeach

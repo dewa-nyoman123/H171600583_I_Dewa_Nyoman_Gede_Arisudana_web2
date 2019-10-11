@@ -6,21 +6,22 @@ use Illuminate\Http\Request;
 use App\Artikel;
 use App\KategoriArtikel;
 
-
 class ArtikelController extends Controller
 {
     function index(){
-        $Artikel=Artikel::all();
+        $artikel=artikel::all();
 
-    return view('artikel.index',compact ('Artikel'));
+        return view('artikel.index',compact ('artikel'));
     }
-     public function show($id)
+    public function show($id)
     {
     
     	$artikel=artikel::find($id);
 
-    	return view(  'artikel.show',compact( 'artikel'));
+    	return view('artikel.show',compact( 'artikel'));
     }
+
+
 
     public function create()
     {
@@ -29,12 +30,58 @@ class ArtikelController extends Controller
 
     	return view( 'artikel.create',compact('KategoriArtikel'));
     }
+
+
+
+
     public function store(Request $request)
     {
-    	$input= $request->all();
+    	$input=$request->all();
     	
-    	Artikel::create($input);
+    	artikel::create($input);
 
     	return redirect(route('artikel.index'));
     }
+
+
+    
+    public function edit($id){
+
+        $artikel=artikel::find($id);
+        $KategoriArtikel=KategoriArtikel::pluck('nama','id');
+
+        if(empty($artikel)){
+          return redirect(route('artikel.index'));
+        }
+  
+        return view('artikel.edit',compact('artikel','KategoriArtikel'));
+        }
+      
+    public function update($id,Request $request){
+
+          $artikel=artikel::find($id);
+
+          $input= $request->all();
+  
+  
+        if(empty($artikel)){
+          return redirect(route('artikel.index'));
+        }
+        $artikel->update($input);
+  
+        return redirect(route('artikel.index'));
+      }
+      public function destroy($id)
+      {
+        $artikel=artikel::find($id);
+  
+        if(empty($artikel)){
+
+          return redirect(route('artikel.index')); }
+  
+          $artikel->delete();
+          
+          return redirect(route('artikel.index'));
+        }
+  
 }

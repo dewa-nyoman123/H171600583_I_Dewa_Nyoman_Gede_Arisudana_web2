@@ -28,4 +28,40 @@ class KategoriArtikelController extends Controller
   
         return redirect(route('KategoriArtikel.index'));
       }
+      public function edit($id){
+        $KategoriArtikel=KategoriArtikel::find($id);
+  
+        if(empty($KategoriArtikel)){
+          return redirect(route('KategoriArtikel.index'));
+        }
+  
+        return view( 'kategori_artikel.edit',compact('KategoriArtikel'));
+        }
+        public function update($id,Request $request){
+          $KategoriArtikel=KategoriArtikel::find($id);
+          $input= $request->all();
+  
+  
+        if(empty($KategoriArtikel)){
+          return redirect(route('KategoriArtikel.index'));
+        }
+        $KategoriArtikel->update($input);
+  
+        return redirect(route('KategoriArtikel.index'));
+      }
+      public function destroy($id)
+      {
+        $KategoriArtikel=KategoriArtikel::find($id);
+  
+        if(empty($KategoriArtikel)){
+          return redirect(route('KategoriArtikel.index')); }
+  
+          $KategoriArtikel->delete();
+          return redirect(route('KategoriArtikel.index'));
+        }
+        public function trash(){
+          $KategoriArtikel=KategoriArtikel::onlyTrashed();
+
+          return view('kategori_artikel.index',compact ('KategoriArtikel'));
+        }
 }
